@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Select from "react-select";
 
 export const EmployeeForm = () => {
   const [employee, assignEmployee] = useState({
@@ -9,7 +10,9 @@ export const EmployeeForm = () => {
 
   const history = useHistory();
 
-  const saveEmployee = () => {
+  const saveEmployee = (event) => {
+    event.preventDefault();
+
     const newEmployee = {
       name: employee.name,
       specialty: employee.specialty,
@@ -63,7 +66,7 @@ export const EmployeeForm = () => {
       </fieldset>
       <fieldset>
         <button className="btn btn-hire" onClick={saveEmployee}>
-          Hire Employee
+          Finish Hire
         </button>
       </fieldset>
     </form>
