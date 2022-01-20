@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 export const EmployeeList = () => {
   const [employees, assignEmployees] = useState([]);
@@ -30,7 +31,11 @@ export const EmployeeList = () => {
       <div>Specialties: {specialties} </div>
       {employees.map((employeeObject) => {
         return (
-          <p key={`employee--${employeeObject.id}`}>{employeeObject.name}</p>
+          <p key={`employee--${employeeObject.id}`}>
+            <Link to={`/employees/${employeeObject.id}`}>
+              {employeeObject.name}
+            </Link>
+          </p>
         );
       })}
     </>
