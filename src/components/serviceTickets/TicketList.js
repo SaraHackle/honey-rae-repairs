@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import "./Ticket.css"
+import { Link } from "react-router-dom";
+import "./Ticket.css";
 
 export const TicketList = () => {
   const [tickets, updateTickets] = useState([]);
@@ -24,14 +25,13 @@ export const TicketList = () => {
           Create Ticket
         </button>
       </div>
-      
+
       {tickets.map((ticket) => {
         return (
           <div key={`ticket--${ticket.id}`}>
-            <p className={`ticket ${ticket.emergency ? "emergency": ""}`}>
+            <p className={`ticket ${ticket.emergency ? "emergency" : ""}`}>
               {ticket.emergency ? "🚑" : ""}
-              {ticket.description}
-              {" "}
+              <Link to={`/tickets/${ticket.id}`}>{ticket.description}</Link>
               submitted by {ticket.customer.name}
               {""} worked on by {ticket.employee.name}
             </p>
